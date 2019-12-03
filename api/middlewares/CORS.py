@@ -1,3 +1,7 @@
+"""
+A middleware to adds a CORS header to each response
+"""
+
 class CORSMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
