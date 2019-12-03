@@ -1,3 +1,7 @@
+"""
+A URL model that contains it's address, keywords and creation time
+"""
+
 from django.db import models
 import json
 
@@ -7,9 +11,7 @@ class Url(models.Model):
     keywords = models.TextField()
 
     def set_keywords(self, data):
-        # convert a string list to string to save in db
-        keywords_str = ', '.join(data)
-        self.keywords = json.dumps(keywords_str)
+        self.keywords = json.dumps(data)
 
     def get_keywords(self):
         return json.loads(self.keywords)

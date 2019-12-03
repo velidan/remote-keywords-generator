@@ -28,8 +28,12 @@ class UrlsView(APIView):
         except UrlDoesntExists as e:
             return Response(str(e), status=status.HTTP_404_NOT_FOUND)
 
+        # need to convert a list to the string before saving in the Model
+        keywords_string = ', '.join(url_keywords)
+
+
         serializer = UrlSerializer(data={'address':  requested_url,
-                                         'keywords': url_keywords} )
+                                         'keywords': keywords_string } )
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

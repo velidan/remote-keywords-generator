@@ -6,11 +6,11 @@ import certifi
 import urllib3
 from bs4 import BeautifulSoup
 
-class UrlDoesntExists(Exception):
-    """ Raises when the program can't connect to the passed URL """
+from api.services.UserAgent import getRandomAgent
 
-    def __str__(self):
-        return 'The passed URL is does not exist'
+default_headers = {
+    'User-Agent': getRandomAgent()
+}
 
 def getPageTitleByUrl(url):
     # adding ssl certificates
@@ -19,11 +19,17 @@ def getPageTitleByUrl(url):
 
     # check if the URL exists by a simple HEAD request
     try:
-        head_response = http.request('HEAD', url)
+        http.request('HEAD', url, headers=default_headers)
 
     except urllib3.exceptions.MaxRetryError as e:
         raise UrlDoesntExists()
 
-    response = http.request('GET', url)
+    response = http.request('GET', url, headers=default_headers)
     soup = BeautifulSoup(response.data, 'html.parser')
     return soup.title.string
+
+class UrlDoesntExists(Exception):
+    """ Raises when the program can't connect to the passed URL """
+
+    def __str__(self):
+        return 'The passed URL is does not exist'

@@ -1,3 +1,7 @@
+"""
+View to handle a single URL. Details, Update, Delete
+"""
+
 from django.http import Http404
 
 from rest_framework.parsers import JSONParser
