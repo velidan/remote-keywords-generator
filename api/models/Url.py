@@ -7,10 +7,12 @@ class Url(models.Model):
     keywords = models.TextField()
 
     def set_keywords(self, data):
-        self.keywords = json.dumps(data)
+        # convert a string list to string to save in db
+        keywords_str = ', '.join(data)
+        self.keywords = json.dumps(keywords_str)
 
     def get_keywords(self):
         return json.loads(self.keywords)
 
     def __str__(self):
-        return '{0}, {1}'.format(self.address, self.keywords)
+        return 'url: {0}, keywords: {1}'.format(self.address, self.keywords)
