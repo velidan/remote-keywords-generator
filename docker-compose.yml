@@ -1,0 +1,14 @@
+version: "3"
+services:
+  url_rest:
+    container_name: url_keys
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: url_keys
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/var/www/url_keys
+    ports:
+      - "8000:8000"
