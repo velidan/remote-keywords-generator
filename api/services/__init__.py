@@ -1,3 +1,3 @@
-from .UrlKeywordsGenerator import *
+from .SentenceKeywordsGenerator import *
 from .UrlTitleParser import *
 from .UserAgent import *

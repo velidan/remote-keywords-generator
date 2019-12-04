@@ -9,7 +9,8 @@ from rest_framework.response import Response
 
 from api.models import Url
 from api.serializers import UrlSerializer
-from api.services import getKeywordsForUrl, UrlDoesntExists
+from api.services import getKeywordsForSentence, getPageTitleByUrl
+from api.errors import UrlDoesntExist
 
 class UrlsView(APIView):
     """
@@ -24,15 +25,16 @@ class UrlsView(APIView):
         requested_url = request.data['url']
         
         try:
-            url_keywords = getKeywordsForUrl(requested_url)
-        except UrlDoesntExists as e:
+            url_title = getPageTitleByUrl(requested_url)
+            url_keywords = getKeywordsForSentence(url_title)
+        except UrlDoesntExist as e:
             return Response(str(e), status=status.HTTP_404_NOT_FOUND)
 
         # need to convert a list to the string before saving in the Model
         keywords_string = ', '.join(url_keywords)
 
-
         serializer = UrlSerializer(data={'address':  requested_url,
+                                         'title': url_title,
                                          'keywords': keywords_string } )
         if serializer.is_valid():
             serializer.save()
