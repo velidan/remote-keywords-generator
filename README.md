@@ -54,8 +54,8 @@ it should run the dev server at the `http://0.0.0.0:8000/` host
 4) You can update the keywords etc. in a particular URL manually by executing a PUT request to:
 `http://127.0.0.1:8000/api/urls/<int:url_id>`
 <br />
-   - The payload should be a stringified json that contains model fields that you want to update
-   - In case of error you'll receive status **400** and an error msg
+     - The payload should be a stringified json that contains model fields that you want to update
+     - In case of error you'll receive status **400** and an error msg
 
 <br />
 
