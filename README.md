@@ -60,7 +60,6 @@ it should run the dev server at the `http://0.0.0.0:8000/` host
 
 5) You can delete a particulr URL data bu executing a `DELETE` request to
 `http://127.0.0.1:8000/api/urls/<int:url_id>`
-<br />
    - In case of success you will receive **204**
 
 
