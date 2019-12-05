@@ -2,55 +2,66 @@
 A REST service that allows you to parse the title of the remote web-page and generate all possible keywords combination based on it
 
 Based on Python 3.6, Django 2, Django Rest Framework, urllib3, beautifysoup4
-
-How to install & run:
+<br />
+**How to install & run:**
 
 Easiest way is to do it via Docker
 
-download the image:  url_keys
-1) docker pull velidan/url_keys
-2) docker-compose up
+download the image:
+1) `docker pull velidan/url_keys`
+2) `docker-compose up`
 
 
-it should run the dev server at the http://0.0.0.0:8000/ host
+it should run the dev server at the `http://0.0.0.0:8000/` host
 
-URL model structure
+**_URL model_** structure
+~~~
 {
     id: int <Primary Key. AutoInremented>;
     title: string <optional>;
     address: string;
     keywords: string;
 }
+~~~
 
-REST API works under /api/urls entrypoint  
+**REST API** has a main `/api/urls` entrypoint  
 
 1) You can see all previously saved urls, their ids, titles and keywords.
-   To do it you should do a GET request to: http://127.0.0.1:8000/api/urls
+   To do it you should do a `GET` request to: `http://127.0.0.1:8000/api/urls`
 
-2) You can create a keywords for a new URL by executing a POST request
-   to http://127.0.0.1:8000/api/urls 
-   Payload should be: url='http://urladdress'
-   Payload should be a plain text.
+<br />
 
-   If this URL doesn't exist you'll receive the 404 err with the human readable message
+2) You can create a keywords for a new URL by executing a `POST` request to `http://127.0.0.1:8000/api/urls`
+   Payload should be: **`url='your_url_value'`**
+   _Payload should be a plain text._
+   <br />
 
-   If the URL had been already handled when you executed the POST request it will be just updated. Duplicates won't be created
+   - If this URL doesn't exist you'll receive the **404** err with the human readable message
 
-   In case of success you'll receive 201 status and the URL data.
+   - If the URL had been already handled when you executed the `POST` request it will be just updated. Duplicates won't be created
 
-   In case of error you'll receive 400 status and an error msg
+   - In case of success you'll receive **201** status and the URL data.
 
-3) You can see a particular URL detail by going a GET request to
-   http://127.0.0.1:8000/api/urls/<int:url_id>
-   url_id - the id of the url what you can examine.
+   - In case of error you'll receive **400** status and an error msg
+<br />
+
+3) You can see a particular URL detail by going a `GET` request to
+   `http://127.0.0.1:8000/api/urls/<int:url_id>`
+   **_url_id_** - the id of the url what you can examine.
+
+<br />
 
 4) You can update the keywords etc. in a particular URL manually by     executing a PUT request to:
-http://127.0.0.1:8000/api/urls/<int:url_id>
-payload should be a stringified json that contains model fields that you want to update
-In case of error you'll receive status 400 and an error msg
+`http://127.0.0.1:8000/api/urls/<int:url_id>`
+<br />
+   - The payload should be a stringified json that contains model fields that you want to update
+   - In case of error you'll receive status **400** and an error msg
 
-5) You can delete a particulr URL data bu executing a DELETE request to
-http://127.0.0.1:8000/api/urls/<int:url_id>
-In case of success you will receive 204
+<br />
+
+5) You can delete a particulr URL data bu executing a `DELETE` request to
+`http://127.0.0.1:8000/api/urls/<int:url_id>`
+<br />
+   - In case of success you will receive **204**
 
 
