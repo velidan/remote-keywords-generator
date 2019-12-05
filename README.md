@@ -1,7 +1,7 @@
 # URL Keywords generator
 A REST service that allows you to parse the title of the remote web-page and generate all possible keywords combination based on it
 
-Based on Python 3.6, Django 2, Django Rest Framework, urllib3, beautifysoup4
+The project based on Python 3.6, Django 2, Django Rest Framework, urllib3, beautifysoup4
 <br />
 **How to install & run:**
 
@@ -31,8 +31,8 @@ it should run the dev server at the `http://0.0.0.0:8000/` host
 
 <br />
 
-2) You can create a keywords for a new URL by executing a `POST` request to `http://127.0.0.1:8000/api/urls`
-   Payload should be: **`url='your_url_value'`**
+2) You can create a keywords for a new URL by executing a `POST` request to `http://127.0.0.1:8000/api/urls`<br />
+   Payload should be: **`url='your_url_value'`**<br />
    _Payload should be a plain text._
    <br />
 
@@ -46,12 +46,12 @@ it should run the dev server at the `http://0.0.0.0:8000/` host
 <br />
 
 3) You can see a particular URL detail by going a `GET` request to
-   `http://127.0.0.1:8000/api/urls/<int:url_id>`
+   `http://127.0.0.1:8000/api/urls/<int:url_id>`<br />
    **_url_id_** - the id of the url what you can examine.
 
 <br />
 
-4) You can update the keywords etc. in a particular URL manually by     executing a PUT request to:
+4) You can update the keywords etc. in a particular URL manually by executing a PUT request to:
 `http://127.0.0.1:8000/api/urls/<int:url_id>`
 <br />
    - The payload should be a stringified json that contains model fields that you want to update
