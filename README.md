@@ -16,8 +16,8 @@ that's all
 
 it should run the dev server at the `http://0.0.0.0:8000/` host
 
-If you want to run the app without docker on your local machine <br />
-you need to follow next steps: <br />
+**If you want to run the app without docker on your local machine <br />
+you need to follow next steps**: <br />
 
 1) clone repo
 2) check if you have installed Python 3+ on your machine (install if missed)
