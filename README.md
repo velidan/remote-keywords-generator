@@ -5,14 +5,27 @@ The project based on Python 3.6, Django 2, Django Rest Framework, urllib3, beaut
 <br />
 **How to install & run:**
 
-Easiest way is to do it via Docker
+Easiest way is to do it via Docker (you need it on your machine)
 
 download the image:
 1) `docker pull velidan/url_keys`
 2) `docker-compose up`
+   
+that's all
 
 
 it should run the dev server at the `http://0.0.0.0:8000/` host
+
+If you want to run the app without docker on your local machine <br />
+you need to follow next steps: <br />
+
+1) clone repo
+2) check if you have installed Python 3+ on your machine (install if missed)
+3) go to the app root folder
+4) install all deps by executing `pip install -r requirements.txt`
+5) execute `./manage.py makemigrations` and `/manage.py migrate` (creates a DB for you)
+6) execute `./manage.py runserver`. Runs a local dev server
+
 
 **_URL model_** structure
 ~~~
