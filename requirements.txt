@@ -13,7 +13,7 @@ cssselect==1.1.0
 Django==3.0
 django-pyc==1.1.0
 django-tastypie==0.14.2
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 httpie==1.0.3
 hyperlink==19.0.0
 idna==2.8
